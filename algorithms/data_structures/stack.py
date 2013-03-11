@@ -1,5 +1,5 @@
 """
-Stack module will go here
+Stacks are cool
 """
 
 class EmptyStackException(Exception):
@@ -15,11 +15,15 @@ class Stack(object):
     def __init__(self):
         self.head = None
 
-    def push(self):
-        pass
+    def push(self, element):
+        self.head = Element(element, self.head)
 
     def pop(self):
-        pass
+        if self.empty():
+            raise EmptyStackException
+        result = self.head.value
+        self.head = self.head.next
+        return result
 
     def empty(self):
-        pass
+        return self.head == None
