@@ -2,7 +2,7 @@
 Stacks are cool
 """
 
-class EmptyStackException(Exception):
+class EmptyStackError(Exception):
     pass
 
 class Element(object):
@@ -20,7 +20,7 @@ class Stack(object):
 
     def pop(self):
         if self.empty():
-            raise EmptyStackException
+            raise EmptyStackError
         result = self.head.value
         self.head = self.head.next
         return result
