@@ -21,4 +21,4 @@ class TestStack(unittest.TestCase):
             result.append(self.stack.pop())
 
         self.assertEqual(self.reverse, result)
-        self.assertRaises(EmptyStackError, self.stack.empty())
+        self.assertRaises(EmptyStackError, self.stack.pop)
