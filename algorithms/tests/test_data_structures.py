@@ -9,7 +9,7 @@ class TestStack(unittest.TestCase):
     def setUp(self):
         self.input = range(5)
         self.stack = Stack()
-        self.reverse = [5, 4, 3, 2, 1]
+        self.reverse = [4, 3, 2, 1, 0]
 
     def test_stack(self):
         for i in self.input:
