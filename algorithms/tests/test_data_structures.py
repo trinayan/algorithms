@@ -1,5 +1,5 @@
 import unittest
-from ..data_structures import Stack, EmptyStackError
+from ..data_structures.stack import Stack, EmptyStackError
 
 class TestStack(unittest.TestCase):
     """
