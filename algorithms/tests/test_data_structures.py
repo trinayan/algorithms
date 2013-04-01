@@ -1,6 +1,7 @@
 """ Unit Tests for data structures """
 import unittest
-from ..data_structures import undirected_adjacency_matrix, Stack, EmptyStackError
+from ..data_structures import undirected_adjacency_matrix
+from ..data_structures.stack import Stack, EmptyStackError
 
 
 class TestUndirectedAdjacencyMatrix(unittest.TestCase):
@@ -11,28 +12,22 @@ class TestUndirectedAdjacencyMatrix(unittest.TestCase):
     def setUp(self):
         self.graph = undirected_adjacency_matrix.UndirectedAdjacencyMatrix()
         self.expected = []
-
         #Test empty graph
         self.expected.append({})
-
         #Test adding vertices
         self.expected.append({v: {i: float('inf') for i in range(20)}
                                  for v in range(20)})
-
         #Test removing vertices
         self.expected.append({v: {i: float('inf') for i in range(0, 20, 2)}
                                  for v in range(0, 20, 2)})
-
         #Test adding edges
         self.expected.append({v: {i: 1 for i in range(0, 20, 2)}
                                  for v in range(0, 20, 2)})
-
         #Test removing edges
         self.expected.append({v: {i: 1 if (i < 10 and v < 10) or
                                      (i >= 10 and v >= 10) else float('inf')
                                      for i in range(0, 20, 2)}
                                  for v in range(0, 20, 2)})
-
         #Test empty graph after removing all vertices
         self.expected.append({})
 
