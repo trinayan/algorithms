@@ -1,7 +1,9 @@
 """ Unit Tests for data structures """
 import unittest
+from random import sample
 from ..data_structures import undirected_adjacency_matrix
 from ..data_structures.stack import Stack, EmptyStackError
+from ..data_structures.linked_list import LinkedList, NoSuchElementError
 
 
 class TestUndirectedAdjacencyMatrix(unittest.TestCase):
@@ -91,3 +93,31 @@ class TestStack(unittest.TestCase):
 
         self.assertEqual(self.reverse, result)
         self.assertRaises(EmptyStackError, self.stack.pop)
+
+
+class TestLinkedList(unittest.TestCase):
+    """
+    Tests the methods of the Linked List data structure.
+    """
+
+    def setUp(self):
+        self.linked_list = LinkedList()
+        self.expected = range(10)
+
+    def test_linked_list(self):
+        self.linked_list.insert_front(5)
+        for x in xrange(4, -1, -1):
+            self.linked_list.insert_front(x)
+        for x in xrange(8, 10):
+            self.linked_list.insert_back(x)
+        for x in xrange(7, 5, -1):
+            self.linked_list.insert_after(5, x)
+        self.assertEqual([x for x in self.linked_list], self.expected)
+        self.assertRaises(NoSuchElementError,
+                          self.linked_list.insert_after, 10, 5)
+        self.assertRaises(NoSuchElementError,
+                          self.linked_list.delete, 10)
+        # Remove elements in random order
+        for x in sample(self.expected, 10):
+            self.linked_list.delete(x)
+        self.assertEqual([x for x in self.linked_list], [])
